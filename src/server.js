@@ -18,10 +18,11 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 // 연결된 브라우저
-function handleConnection(socket) {
-  console.log(socket);
-}
-
-wss.on('connection', handleConnection);
+wss.on('connection', (socket) => {
+  console.log('connected to Browser');
+  socket.on('close', () => console.log('disconnected from browser'));
+  socket.on('message', (message) => console.log(message.toString()));
+  socket.send('hello!!!');
+});
 
 server.listen(3000, handleListen);
