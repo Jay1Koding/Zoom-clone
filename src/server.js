@@ -24,10 +24,26 @@ const sockets = [];
 wss.on('connection', (socket) => {
   sockets.push(socket);
   console.log('connected to Browser');
+  socket['nickname'] = 'Anonymous';
   socket.on('close', () => console.log('disconnected from browser'));
 
-  socket.on('message', (message) => {
-    sockets.forEach((aSockets) => aSockets.send(message.toString()));
+  socket.on('message', (msg) => {
+    const message = JSON.parse(msg);
+    switch (message.type) {
+      case 'new_message':
+        sockets.forEach((aSockets) =>
+          aSockets.send(`${socket.nickname} : ${message.payload.toString()}`)
+        );
+      case 'nickname':
+        socket['nickname'] = message.payload;
+        console.log(message.payload);
+        break;
+      default:
+        break;
+    }
+
+    // console.log(typeof msg.toJSON()); // object
+    // console.log(msg.toJSON()); // type : buffer
   });
   socket.send('hello!!!');
 });
