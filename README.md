@@ -47,3 +47,33 @@ function handleNickSubmit(event) {
   // });
 }
 ```
+
+## SocketIO vs WebSockets
+
+[SockIO](https://socket.io/docs/v4/)
+
+> install SocketIO
+> npm i socket.io
+> Socket.io 에서 url을 제공해줌
+> [Socket.IO](http://localhost:3000/socket.io/socket.io.js)
+> SocketIO는 WebSocket의 부가기능이 아니기에 제공받음
+> WebSocket API는 브라우저에 설치되있으나 SocketIO는 Client도 다운을 받을 필요가 있음
+
+```pug
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Zoom
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+    body
+        header
+            h1 ZOOM
+        main
+
+    //- here
+    script(src="/socket.io/socket.io.js")
+    script(src="/public/js/app.js")
+```
