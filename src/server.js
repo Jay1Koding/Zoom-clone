@@ -16,12 +16,11 @@ const httpServer = http.createServer(app);
 const wsServer = SocketIO(httpServer);
 
 wsServer.on('connection', (socket) => {
+  socket.onAny((event) => {});
   // 클라이언트의 emit 3번째 인자를 받아 done을 콜백으로 실행.... 세상에
-  socket.on('enter_room', (msg, done) => {
-    console.log(msg);
-    setTimeout(() => {
-      done();
-    }, 10000);
+  socket.on('enter_room', (roomName, done) => {
+    socket.join(roomName);
+    done();
   });
 });
 

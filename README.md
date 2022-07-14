@@ -77,3 +77,17 @@ html(lang="en")
     script(src="/socket.io/socket.io.js")
     script(src="/public/js/app.js")
 ```
+
+## Socket.io
+
+- socket.io에서 client는 어떠한 event든 emit할 수 있게 해줌
+- string 뿐만 아니라 다른 타입으로도 보낼 수 있음
+- 인자를 제한없이 보낼 수 있음
+- 인자의 마지막에 함수로 콜백할 수 있음
+  - 보안상의 문제로 백엔드는 프론트엔드에서 오는 코드를 실행시킴 안됨
+  - 프론트 엔드에 있는 function을 백엔드에서 실행시켜줌
+    - 인자도 전달해줌
+
+## Server API
+
+[Server API](https://socket.io/docs/v4/server-api/)
