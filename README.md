@@ -95,3 +95,5 @@ html(lang="en")
 ## Adapter
 
 [Mongo Adapter](https://socket.io/docs/v4/mongo-adapter/)
+
+## Map / Set
