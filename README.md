@@ -91,3 +91,7 @@ html(lang="en")
 ## Server API
 
 [Server API](https://socket.io/docs/v4/server-api/)
+
+## Adapter
+
+[Mongo Adapter](https://socket.io/docs/v4/mongo-adapter/)
