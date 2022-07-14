@@ -97,3 +97,7 @@ html(lang="en")
 [Mongo Adapter](https://socket.io/docs/v4/mongo-adapter/)
 
 ## Map / Set
+
+## Admin UI
+
+[Admin UI](https://socket.io/docs/v4/admin-ui/)
