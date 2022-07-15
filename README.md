@@ -78,6 +78,42 @@ html(lang="en")
     script(src="/public/js/app.js")
 ```
 
+## WebSocket
+
+```javascript
+// 같은 서버에서 http, WebSockets를 둘다 작동시킴
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+const sockets = [];
+// 연결된 브라우저
+wss.on('connection', (socket) => {
+  sockets.push(socket);
+  console.log('connected to Browser');
+  socket['nickname'] = 'Anonymous';
+  socket.on('close', () => console.log('disconnected from browser'));
+
+  socket.on('message', (msg) => {
+    const message = JSON.parse(msg);
+    switch (message.type) {
+      case 'new_message':
+        sockets.forEach((aSockets) =>
+          aSockets.send(`${socket.nickname} : ${message.payload.toString()}`)
+        );
+      case 'nickname':
+        socket['nickname'] = message.payload;
+        console.log(message.payload);
+        break;
+      default:
+        break;
+    }
+
+    // console.log(typeof msg.toJSON()); // object
+    // console.log(msg.toJSON()); // type : buffer
+  });
+  socket.send('hello!!!');
+});
+```
+
 ## Socket.io
 
 - socket.io에서 client는 어떠한 event든 emit할 수 있게 해줌
@@ -101,3 +137,11 @@ html(lang="en")
 ## Admin UI
 
 [Admin UI](https://socket.io/docs/v4/admin-ui/)
+
+## Media Stream API
+
+[MediaDevices.getUserMedia()](https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/getUserMedia)
+
+## MediaDevices.enumerateDevices()
+
+[MediaDevices.enumerateDevices()](https://developer.mozilla.org/ko/docs/Web/API/MediaDevices/enumerateDevices)
