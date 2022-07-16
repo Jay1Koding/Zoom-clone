@@ -149,3 +149,7 @@ wss.on('connection', (socket) => {
 ## WebRTC API
 
 [WebRTC API](https://developer.mozilla.org/ko/docs/Web/API/WebRTC_API)
+
+## RTCIceCandidate
+
+[RTCIceCandidate](https://developer.mozilla.org/ko/docs/Web/API/RTCIceCandidate)
